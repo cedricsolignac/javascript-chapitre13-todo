@@ -66,7 +66,6 @@ const createTodoEditElement = (todo, index) => {
   const input = document.createElement("input");
   input.type = "text";
   input.value = todo.text;
-  input.setAttribute("index", index);
   const buttonSave = document.createElement("button");
   buttonSave.innerHTML = "Save";
   const buttonCancel = document.createElement("button");
@@ -76,7 +75,7 @@ const createTodoEditElement = (todo, index) => {
     toggleEditMode(index);
   });
   buttonSave.addEventListener("click", event => {
-    editTodo(index);
+    editTodo(index, input);
   });
   li.append(input, buttonCancel, buttonSave);
   return li;
@@ -105,8 +104,7 @@ const toggleEditMode = index => {
   displayTodo();
 };
 
-const editTodo = index => {
-  const input = document.querySelector(`input[index="${index}"]`);
+const editTodo = (index, input) => {
   const value = input.value;
   todos[index].text = value;
   todos[index].editMode = false;
