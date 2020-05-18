@@ -3,29 +3,29 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: {
-    main: path.join(__dirname, "src/index.js")
+    main: path.join(__dirname, "src/index.js"),
   },
   output: {
     path: path.join(__dirname, "dist"),
-    filename: "[name].bundle.js"
+    filename: "[name].bundle.js",
   },
   module: {
     rules: [
       {
         test: /\.js/,
         exclude: /(node_modules)/,
-        use: ["babel-loader"]
+        use: ["babel-loader"],
       },
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"]
-      }
-    ]
+        use: ["style-loader", "css-loader"],
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "./src/index.html")
-    })
+      template: path.join(__dirname, "./src/index.html"),
+    }),
   ],
   stats: "minimal",
   devtool: "source-map",
@@ -34,6 +34,6 @@ module.exports = {
     open: false,
     contentBase: "./dist",
     inline: true,
-    port: 4000
-  }
+    port: 4000,
+  },
 };
